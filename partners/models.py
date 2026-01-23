@@ -6,7 +6,7 @@ class Customer(models.Model):
     phone = models.CharField(max_length=20)
     email = models.EmailField(blank=True)
     document = models.CharField(max_length=18, blank=True)
-    address = models.ForeignKey('partners.Address', on_delete=models.SET_NULL, null=True, blank=True)
+    address = models.ForeignKey('partners.Address', on_delete=models.SET_NULL, null=True, blank=True,related_name='customers')
     is_active = models.BooleanField(default=True)
     
     class Meta:
@@ -19,7 +19,7 @@ class Supplier(models.Model):
     document = models.CharField(max_length=18)
     phone = models.CharField(max_length=20)
     email = models.EmailField(blank=True)
-    address = models.ForeignKey('partners.Address', on_delete=models.SET_NULL, null=True, blank=True)
+    address = models.ForeignKey('partners.Address', on_delete=models.SET_NULL, null=True, blank=True, related_name='suppliers')
     is_active = models.BooleanField(default=True)
     
     class Meta:
@@ -34,7 +34,7 @@ class Employee(models.Model):
     salary = models.DecimalField(max_digits=10, decimal_places=2)
     hire_date = models.DateField()
     termination_date = models.DateField(null=True, blank=True)
-    address = models.ForeignKey('partners.Address', on_delete=models.SET_NULL, null=True, blank=True)
+    address = models.ForeignKey('partners.Address', on_delete=models.SET_NULL, null=True, blank=True, related_name='employees')
     is_active = models.BooleanField(default=True)
     
     class Meta:

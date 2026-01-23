@@ -34,14 +34,15 @@ DATABASE_ROUTERS = (
 # Application definition
 
 SHARED_APPS = [
+    'drf_yasg',
     'django_tenants',  # mandatory
-    'core',  # you must list the app where your tenant model resides in
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'core',  # you must list the app where your tenant model resides in shared apps
 ]
 
 TENANT_APPS = (
@@ -64,6 +65,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    ),
+}
 
 ROOT_URLCONF = 'app.urls'
 
@@ -80,6 +86,14 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+STATIC_URL = '/static/'
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
 ]
 
 WSGI_APPLICATION = 'app.wsgi.application'

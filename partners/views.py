@@ -8,19 +8,19 @@ from partners.serializres import CustomerSerializer, SupplierSerializer, Employe
 class CustomerViewSet(viewsets.ModelViewSet):
     model = Customer
     serializer_class = CustomerSerializer
-    queryset = model.objects.all()
+    queryset = model.objects.select_related('address').all()
     permission_classes = [IsAuthenticated]
     
 class SupplierViewSet(viewsets.ModelViewSet):
     model = Supplier
     serializer_class = SupplierSerializer
-    queryset = model.objects.all()
+    queryset = model.objects.select_related('address').all()
     permission_classes = [IsAuthenticated]
 
 class EmployeeViewSet(viewsets.ModelViewSet):
     model = Employee
     serializer_class = EmployeeSerializer
-    queryset = model.objects.all()
+    queryset = model.objects.select_related('address').all()
     permission_classes = [IsAuthenticated]
 
 class AddressViewSet(viewsets.ModelViewSet):
@@ -28,3 +28,4 @@ class AddressViewSet(viewsets.ModelViewSet):
     serializer_class = AddressSerializer
     queryset = model.objects.all()
     permission_classes = [IsAuthenticated]
+    
