@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-@h$6apckx9jn1fjm%cdf$ve8l1a3tpu1_@4r0zhw=(+u7=1pq5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+APPEND_SLASH=False
 
 
 DATABASE_ROUTERS = (
@@ -34,6 +35,7 @@ DATABASE_ROUTERS = (
 # Application definition
 
 SHARED_APPS = [
+    'rest_framework_simplejwt',
     'drf_yasg',
     'django_tenants',  # mandatory
     'django.contrib.admin',
@@ -47,6 +49,9 @@ SHARED_APPS = [
 
 TENANT_APPS = (
     'partners',
+    'catalog',
+    'orders',
+    'inventory',
 )
 
 INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
@@ -66,6 +71,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
     ),

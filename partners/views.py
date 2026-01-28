@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from partners.models import Customer, Supplier, Employee, Address
-from partners.serializres import CustomerSerializer, SupplierSerializer, EmployeeSerializer, AddressSerializer
+from partners.serializers import CustomerSerializer, SupplierSerializer, EmployeeSerializer, AddressSerializer
 
 # Create your views here.
 class CustomerViewSet(viewsets.ModelViewSet):
