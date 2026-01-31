@@ -109,6 +109,8 @@ media/
 *.pid
 
 frontend
+frontend/
+repositorioGit.txt
 
 # Ignore Django Migrations in Development if you are working on team
 

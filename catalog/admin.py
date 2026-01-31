@@ -1,15 +1,18 @@
 from django.contrib import admin
 from .models import Product, ProductImage, ProductVariation, Category
 
+
 # Register your models here.
 class ProductImageInline(admin.TabularInline):
     model = ProductImage
     extra = 1
     max_num = 5
 
+
 class ProductVariationInline(admin.TabularInline):
     model = ProductVariation
     extra = 1
+
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
@@ -21,6 +24,7 @@ class ProductAdmin(admin.ModelAdmin):
         ProductImageInline,
         ProductVariationInline
     ]
+
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):

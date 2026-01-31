@@ -9,11 +9,12 @@ from .models import (
     ProductVariation   # Modelo de variações do produto
 )
 
+
 # Serializer responsável por converter o model Category em JSON e vice-versa
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category                     # Define o model que será serializado
-        fields = ['id', 'name', 'is_active'] # Campos expostos na API
+        fields = ['id', 'name', 'is_active']  # Campos expostos na API
 
 
 # Serializer responsável pelas imagens do produto
@@ -97,7 +98,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
         # Retorna o produto criado
         return product
-    
+
     # Método sobrescrito para atualização do produto
     def update(self, instance, validated_data):
         # Remove as variações do payload, se existirem

@@ -2,6 +2,7 @@ from rest_framework.viewsets import ModelViewSet
 from .models import Product, Category, ProductVariation
 from .serializers import ProductSerializer, CategorySerializer, ProductVariationSerializer
 
+
 class ProductViewSet(ModelViewSet):
     queryset = Product.objects.prefetch_related(
         'images',
@@ -11,11 +12,10 @@ class ProductViewSet(ModelViewSet):
     serializer_class = ProductSerializer
 
 
-from rest_framework.viewsets import ModelViewSet
-
 class CategoryViewSet(ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+
 
 # opcional crud para variações de produtos diretamente
 class ProductVariationViewSet(ModelViewSet):

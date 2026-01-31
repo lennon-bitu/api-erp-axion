@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-@h$6apckx9jn1fjm%cdf$ve8l1a3tpu1_@4r0zhw=(+u7=1pq5
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-APPEND_SLASH=False
+APPEND_SLASH = False
 
 
 DATABASE_ROUTERS = (
@@ -56,7 +56,7 @@ TENANT_APPS = (
 
 INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
 
-TENANT_MODEL = "core.Client" # app.Model
+TENANT_MODEL = "core.Client"  # app.Model
 
 TENANT_DOMAIN_MODEL = "core.Domain"  # app.Model
 

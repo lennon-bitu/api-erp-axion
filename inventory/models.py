@@ -2,6 +2,7 @@ from django.db import models
 from django.core.exceptions import ValidationError
 from catalog.models import Product, ProductVariation
 
+
 class Stock(models.Model):
     product = models.ForeignKey(
         Product,

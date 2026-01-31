@@ -1,8 +1,8 @@
-from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from partners.models import Customer, Supplier, Employee, Address
 from partners.serializers import CustomerSerializer, SupplierSerializer, EmployeeSerializer, AddressSerializer
+
 
 # Create your views here.
 class CustomerViewSet(viewsets.ModelViewSet):
@@ -10,12 +10,14 @@ class CustomerViewSet(viewsets.ModelViewSet):
     serializer_class = CustomerSerializer
     queryset = model.objects.select_related('address').all()
     permission_classes = [IsAuthenticated]
-    
+
+
 class SupplierViewSet(viewsets.ModelViewSet):
     model = Supplier
     serializer_class = SupplierSerializer
     queryset = model.objects.select_related('address').all()
     permission_classes = [IsAuthenticated]
+
 
 class EmployeeViewSet(viewsets.ModelViewSet):
     model = Employee
@@ -23,9 +25,9 @@ class EmployeeViewSet(viewsets.ModelViewSet):
     queryset = model.objects.select_related('address').all()
     permission_classes = [IsAuthenticated]
 
+
 class AddressViewSet(viewsets.ModelViewSet):
     model = Address
     serializer_class = AddressSerializer
     queryset = model.objects.all()
     permission_classes = [IsAuthenticated]
-    

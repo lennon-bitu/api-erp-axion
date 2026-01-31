@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 
+
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -8,7 +9,7 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     class Meta:
         verbose_name = "Categoria"
         verbose_name_plural = "Categorias"
@@ -30,7 +31,7 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     class Meta:
         verbose_name = "Produto"
         verbose_name_plural = "Produtos"
@@ -62,8 +63,7 @@ class ProductVariation(models.Model):
     stock = models.PositiveIntegerField(default=0)
 
     # 🔥 atributos dinâmicos
-    attributes = models.JSONField(default=dict, blank=True)
-    # exemplo: {"color": "Black", "size": "M", "material": "Cotton"}
+    attributes = models.JSONField(default=dict, blank=True)   # exemplo: {"color": "Black", "size": "M", "material": "Cotton"}
 
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)

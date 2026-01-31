@@ -10,6 +10,7 @@ class AddressSerializer(serializers.ModelSerializer):
 
 class CustomerSerializer(serializers.ModelSerializer):
     address = AddressSerializer(read_only=True)
+
     class Meta:
         model = Customer
         fields = 'name', 'phone', 'email', 'document', 'address', 'is_active'
@@ -25,4 +26,3 @@ class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee
         fields = '__all__'
-
