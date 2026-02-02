@@ -1,6 +1,6 @@
-# 🚀 API ERP Axion – SaaS Backend (Django)
+# 🚀 API ERP Axion – SaaS Backend (Django + Docker)
 
-Este projeto é um **backend SaaS** desenvolvido em **Django** com foco em **ERP / Delivery**, utilizando **arquitetura multi-tenant**, API REST e autenticação moderna.
+Este projeto é um **backend SaaS** desenvolvido em **Django**, voltado para **ERP / Delivery**, utilizando **arquitetura multi-tenant**, API REST e execução totalmente via **Docker**.
 
 ---
 
@@ -12,16 +12,18 @@ Este projeto é um **backend SaaS** desenvolvido em **Django** com foco em **ERP
 - Django Simple JWT
 - Django Tenants
 - PostgreSQL
+- Docker
+- Docker Compose
 
 ---
 
-## 📦 Funcionalidades Principais
+## 📦 Funcionalidades
 
 - Arquitetura SaaS Multi-Tenant
 - Cadastro de empresas (tenants)
 - Autenticação JWT
 - API RESTful
-- Controle de planos e permissões
+- Controle de planos
 - Isolamento de dados por tenant
 
 ---
@@ -35,82 +37,54 @@ cd api-erp-axion
 
 ---
 
-## 🐍 Criando Ambiente Virtual
+## 🐳 Execução com Docker
 
-### Linux / macOS
+### Pré-requisitos
 
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
-
-### Windows
+- Docker
+- Docker Compose
 
 ```bash
-python -m venv venv
-venv\Scripts\activate
-```
-
----
-
-## 📦 Instalando Dependências
-
-```bash
-pip install --upgrade pip
-pip install -r requirements.txt
-```
-
----
-
-## 🐘 Configuração do PostgreSQL
-
-Crie um banco de dados e usuário:
-
-```sql
-CREATE DATABASE axion;
-CREATE USER axion_user WITH PASSWORD 'senha_segura';
-GRANT ALL PRIVILEGES ON DATABASE axion TO axion_user;
+docker --version
+docker compose version
 ```
 
 ---
 
 ## ⚙️ Variáveis de Ambiente
 
-Crie um arquivo `.env`:
+Crie o arquivo `.env` na raiz do projeto:
 
 ```env
 DEBUG=True
 SECRET_KEY=sua_secret_key
-DB_NAME=axion
-DB_USER=axion_user
-DB_PASSWORD=senha_segura
-DB_HOST=localhost
-DB_PORT=5432
+POSTGRES_DB=axion
+POSTGRES_USER=axion_user
+POSTGRES_PASSWORD=senha_segura
+POSTGRES_HOST=db
+POSTGRES_PORT=5432
 ```
 
 ---
 
-## 🏗️ Migrando o Banco (Django Tenants)
+## ▶️ Subindo o Ambiente
 
 ```bash
-python manage.py migrate_schemas --shared
-python manage.py migrate_schemas
+docker compose up --build
+```
+
+Modo background:
+
+```bash
+docker compose up -d --build
 ```
 
 ---
 
-## 👤 Criando Superusuário
+## 🌐 Acessando a API
 
-```bash
-python manage.py createsuperuser
 ```
-
----
-
-## ▶️ Rodando o Projeto
-
-```bash
-python manage.py runserver
+http://localhost:8000/
 ```
 
 ---
@@ -130,19 +104,28 @@ POST /api/token/
 
 ---
 
-## 🌐 Acesso Multi-Tenant
+## 🌍 Multi-Tenant Local
 
-Configure o arquivo hosts:
+Adicione no arquivo `hosts`:
 
 ```text
 127.0.0.1 empresa1.localhost
+127.0.0.1 empresa2.localhost
 ```
 
 ---
 
-## 📄 Licença
+## 🛑 Parando Containers
 
-Projeto privado.
+```bash
+docker compose down
+```
+
+Remover volumes:
+
+```bash
+docker compose down -v
+```
 
 ---
 
