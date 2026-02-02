@@ -17,7 +17,7 @@ class Stock(models.Model):
         on_delete=models.CASCADE,
         null=True,
         blank=True,
-        related_name="stock"
+        related_name="inventory_stock"
     )
 
     quantity = models.IntegerField(default=0)

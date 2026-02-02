@@ -1,0 +1,11 @@
+venv
+.env
+.venv
+__pycache__
+frontend
+.gitignore
+.git
+.README.md
+repositorioGit.txt
+DOCUMENTATION.md
+.pytest_cache

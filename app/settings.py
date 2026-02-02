@@ -115,8 +115,8 @@ DATABASES = {
         'NAME': 'erp_database',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': 'localhost',
-        'PORT': '5433',
+        'HOST': 'erp_db',
+        'PORT': '5432',
     }
 }
 # DATABASES = {
